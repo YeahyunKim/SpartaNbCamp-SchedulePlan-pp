@@ -32,4 +32,11 @@ public class Schedule extends Timestamped{
         this.managerName = requestDto.getManagerName();
         this.password = requestDto.getPassword();
     }
+
+    public void update(ScheduleRequestDto requestDto) {
+        this.title = requestDto.getTitle();
+        this.content = requestDto.getContent();
+        this.managerName = requestDto.getManagerName();
+        //일정 수정이기 때문에, password 변경은 제외
+    }
 }

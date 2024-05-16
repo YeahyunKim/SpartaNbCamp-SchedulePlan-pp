@@ -35,4 +35,10 @@ public class ScheduleController {
     public List<ScheduleResponseDto> getSchedules() {
         return scheduleService.getSchedules();
     }
+
+    // =====[Update]===== 4단계 선택한 일정 수정
+    @PutMapping("/schedule/{id}/{password}")
+    public ScheduleResponseDto updateSchedule(@PathVariable Long id, @PathVariable String password, @RequestBody ScheduleRequestDto requestDto) {
+        return scheduleService.updateSchedule(id, requestDto, password);
+    }
 }
