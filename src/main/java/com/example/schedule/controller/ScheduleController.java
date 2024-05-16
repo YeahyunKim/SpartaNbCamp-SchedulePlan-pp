@@ -6,9 +6,7 @@ import com.example.schedule.entity.Schedule;
 import com.example.schedule.service.ScheduleService;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.List;
 
 @RestController
 @RequestMapping("/api")
@@ -27,8 +25,14 @@ public class ScheduleController {
     }
 
     // =====[Read]===== 2단계 선택한 일정 조회
-    @GetMapping("/schedule/")
+    @GetMapping("/schedule/content")
     public Schedule findSchedule(@RequestParam Long id) {
         return scheduleService.getScheduleById(id);
+    }
+
+    // =====[Read]===== 3단계 전체 일정 조회
+    @GetMapping("/schedule")
+    public List<ScheduleResponseDto> getSchedules() {
+        return scheduleService.getSchedules();
     }
 }

@@ -6,6 +6,8 @@ import com.example.schedule.entity.Schedule;
 import com.example.schedule.repository.ScheduleRepository;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class ScheduleService {
     private final ScheduleRepository scheduleRepository;
@@ -14,6 +16,7 @@ public class ScheduleService {
         this.scheduleRepository = scheduleRepository;
     }
 
+    // =====[Create]===== 1단계 일정 작성
     public ScheduleResponseDto createMemo(ScheduleRequestDto requestDto) {
         Schedule schedule = new Schedule(requestDto);
 
@@ -24,9 +27,15 @@ public class ScheduleService {
         return scheduleResponseDto;
     }
 
+    // =====[Read]===== 2단계 선택한 일정 조회
     public Schedule getScheduleById(Long id) {
         return scheduleRepository.findById(id).orElseThrow(() ->
             new IllegalArgumentException("선택한 스케쥴을 존재하지 않습니다.")
         );
+    }
+
+    // =====[Read]===== 3단계 전체 일정 조회
+    public List<ScheduleResponseDto> getSchedules() {
+        return scheduleRepository.findAllByOrderByCreatedAtDesc().stream().map(ScheduleResponseDto::new).toList();
     }
 }
