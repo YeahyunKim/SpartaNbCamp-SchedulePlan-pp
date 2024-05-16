@@ -6,8 +6,6 @@ import com.example.schedule.entity.Schedule;
 import com.example.schedule.repository.ScheduleRepository;
 import org.springframework.stereotype.Service;
 
-import java.util.Collections;
-
 @Service
 public class ScheduleService {
     private final ScheduleRepository scheduleRepository;
@@ -24,5 +22,11 @@ public class ScheduleService {
         ScheduleResponseDto scheduleResponseDto = new ScheduleResponseDto(schedule);
 
         return scheduleResponseDto;
+    }
+
+    public Schedule getScheduleById(Long id) {
+        return scheduleRepository.findById(id).orElseThrow(() ->
+            new IllegalArgumentException("선택한 스케쥴을 존재하지 않습니다.")
+        );
     }
 }
