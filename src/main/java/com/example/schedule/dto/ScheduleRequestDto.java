@@ -11,7 +11,7 @@ import java.util.Date;
 public class ScheduleRequestDto {
     String title;         // 할일 제목
     String content;       // 할일 내용
-    String managerName;    // 담당자 이름
+    String managerName;   // 담당자 이름
     String password;      // 비밀번호
     Date createdAt;       // 작성일
 }
