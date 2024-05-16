@@ -1,28 +1,35 @@
 package com.example.schedule.entity;
 
 import com.example.schedule.dto.ScheduleRequestDto;
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.util.Date;
 
-@Getter                   // lombok을 통한 get 메서드 추가
-@Setter                   // lombok을 통한 set 메서드 추가
-@NoArgsConstructor        // lombok을 통한 기본생성자 추가
-public class Schedule {
-    long id;              // 할일 고유번호
-    String title;         // 할일 제목
-    String content;       // 할일 내용
-    String managerName;    // 담당자 이름
-    String password;      // 비밀번호
-    Date createdAt;       // 작성일
+@Entity                   // JPA가 관리할 수 있는 Entity 클래스 지정
+@Getter
+@Setter
+@Table(name = "schedulePlan") // 매핑할 테이블의 이름을 지정
+@NoArgsConstructor
+public class Schedule extends Timestamped{
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+    @Column(name = "title", nullable = false, length = 50)
+    private String title;
+    @Column(name = "content", nullable = false, length = 500)
+    private String content;
+    @Column(name = "managerName", nullable = false, length = 10)
+    private String managerName;
+    @Column(name = "password", nullable = false, length = 20)
+    private String password;
 
     public Schedule(ScheduleRequestDto requestDto) { // ScheduleRequestDto로 데이터를 전달 받고 이를 Schedule 클래스에 저장
         this.title = requestDto.getTitle();
         this.content = requestDto.getContent();
         this.managerName = requestDto.getManagerName();
         this.password = requestDto.getPassword();
-        this.createdAt = requestDto.getCreatedAt();
     }
 }

@@ -3,6 +3,7 @@ package com.example.schedule.dto;
 import com.example.schedule.entity.Schedule;
 import lombok.Getter;
 
+import java.time.LocalDateTime;
 import java.util.Date;
 
 // [[ 해당 클래스를 통해 데이터를 '보여'줍니다.]]
@@ -11,12 +12,13 @@ import java.util.Date;
 // 2. 데이터 이외의 로직을 작성하지 않아도 돼서 코드의 가독성을 높일 수 있다.
 @Getter
 public class ScheduleResponseDto {
-    long id;              // 할일 제목
-    String title;         // 할일 제목
-    String content;       // 할일 내용
-    String managerName;   // 담당자 이름
-    String password;      // 비밀번호
-    Date createdAt;       // 작성일
+    long id;                         // 고유 아이디
+    String title;                    // 할일 제목
+    String content;                  // 할일 내용
+    String managerName;              // 담당자 이름
+    String password;                 // 비밀번호
+    private LocalDateTime createdAt;
+    private LocalDateTime updatedAt;
 
     public ScheduleResponseDto(Schedule schedule) { // Schedule 클래스에 저장된 데이터를 ScheduleResponseDto 생성자에 전달
         this.id = schedule.getId();
@@ -25,5 +27,6 @@ public class ScheduleResponseDto {
         this.managerName = schedule.getManagerName();
         this.password = schedule.getPassword();
         this.createdAt = schedule.getCreatedAt();
+        this.updatedAt = schedule.getUpdatedAt();
     }
 }
