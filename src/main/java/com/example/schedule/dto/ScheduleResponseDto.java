@@ -17,8 +17,8 @@ public class ScheduleResponseDto {
     String content;                  // 할일 내용
     String managerName;              // 담당자 이름
     String password;                 // 비밀번호
-    private LocalDateTime createdAt;
-    private LocalDateTime updatedAt;
+    private LocalDateTime createdAt; // 생성일
+    private LocalDateTime updatedAt; // 수정일
 
     public ScheduleResponseDto(Schedule schedule) { // Schedule 클래스에 저장된 데이터를 ScheduleResponseDto 생성자에 전달
         this.id = schedule.getId();

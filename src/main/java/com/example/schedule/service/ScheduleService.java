@@ -19,10 +19,13 @@ public class ScheduleService {
 
     // =====[Create]===== 1단계 일정 작성
     public ScheduleResponseDto createMemo(ScheduleRequestDto requestDto) {
+        //  1. schedule 객체를 생성하고, 해당 객체에 requestDto에 담긴 값들을 저장
         Schedule schedule = new Schedule(requestDto);
 
+        //  2. requestDto의 값이 담김 schedule을 scheduleRepository에 save()메서드를 통해 저장
         Schedule saveSchedule = scheduleRepository.save(schedule);
 
+        //  3. 반환할 ResponseDto 객체를 생성하고, 해당 객체에 schedule 데이터를 저장
         ScheduleResponseDto scheduleResponseDto = new ScheduleResponseDto(schedule);
 
         return scheduleResponseDto;
@@ -34,10 +37,12 @@ public class ScheduleService {
         return getScheduleById(id);
     }
 
+
     // =====[Read]===== 3단계 전체 일정 조회
     public List<ScheduleResponseDto> getSchedules() {
         return scheduleRepository.findAllByOrderByCreatedAtDesc().stream().map(ScheduleResponseDto::new).toList();
     }
+
 
     // =====[Update]===== 4단계 선택한 일정 수정
     @Transactional
@@ -53,6 +58,7 @@ public class ScheduleService {
         return scheduleResponseDto;
 
     }
+
 
     // =====[Delete]===== 5단계 선택한 일정 삭제
     public Long deleteSchedule(Long id, String password) {
