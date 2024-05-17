@@ -28,11 +28,10 @@ public class ScheduleService {
         return scheduleResponseDto;
     }
 
+
     // =====[Read]===== 2단계 선택한 일정 조회
-    public Schedule getScheduleById(Long id) {
-        return scheduleRepository.findById(id).orElseThrow(() ->
-            new IllegalArgumentException("선택한 스케쥴을 존재하지 않습니다.")
-        );
+    public Schedule findSchedule(Long id) {
+        return getScheduleById(id);
     }
 
     // =====[Read]===== 3단계 전체 일정 조회
@@ -67,7 +66,17 @@ public class ScheduleService {
         return id;
     }
 
-    //비밀번호 확인 로직
+
+
+
+    // 아이디 조회 로직
+    public Schedule getScheduleById(Long id) {
+        return scheduleRepository.findById(id).orElseThrow(() ->
+                new IllegalArgumentException("선택한 스케쥴을 존재하지 않습니다.")
+        );
+    }
+
+    // 비밀번호 확인 로직
     public Schedule checkPasswordWithId(Long id, String password) {
         Schedule schedule = getScheduleById(id);
 

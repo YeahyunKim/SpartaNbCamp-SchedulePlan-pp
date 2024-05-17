@@ -27,7 +27,7 @@ public class ScheduleController {
     // =====[Read]===== 2단계 선택한 일정 조회
     @GetMapping("/schedule/content")
     public Schedule findSchedule(@RequestParam Long id) {
-        return scheduleService.getScheduleById(id);
+        return scheduleService.findSchedule(id);
     }
 
     // =====[Read]===== 3단계 전체 일정 조회
