@@ -1,7 +1,8 @@
 ![header](https://capsule-render.vercel.app/api?type=waving&color=976CB2&height=300&section=header&text=SchedulePlan&fontColor=ffffff&fontSize=90)
 
 # SpartaNbCamp-SchedulePlan-pp
-[Personal Project] Spring Boot를 기반으로 CRUD(Create, Read, Update, Delete) 기능이 포함된 REST API를 만어보기.
+[Personal Project] Spring Boot를 기반으로 CRUD(Create, Read, Update, Delete) 기능이 포함된 REST API를 만들어보기.
+
 <br>
 <br>
 
@@ -24,6 +25,21 @@ ex) [Fix] level 1-1 Sum() 함수 return 값을 double -> int 로 수정
 
 2. Branch 전략
   - `main` : 개발 완료 및 배포를 위한 브랜치
+
+<br>
+<br>
+
+### CRUD check by PostMan
+
+|Create|Read|
+|---|---|
+|<img src="https://ifh.cc/g/J9gbcT.png" style="width:100%;">|<img src="https://ifh.cc/g/DKSjtb.png" style="width:100%;">|
+
+<br>
+
+|Update|Delete|
+|---|---|
+|<img src="https://ifh.cc/g/6RZwHj.png" style="width:100%;">|<img src="https://ifh.cc/g/Q70GOM.png" style="width:100%;">|
 
 <br>
 <br>
