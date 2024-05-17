@@ -41,4 +41,10 @@ public class ScheduleController {
     public ScheduleResponseDto updateSchedule(@PathVariable Long id, @PathVariable String password, @RequestBody ScheduleRequestDto requestDto) {
         return scheduleService.updateSchedule(id, requestDto, password);
     }
+
+    // =====[Delete]===== 5단계 선택한 일정 삭제
+    @DeleteMapping("/schedule/{id}/{password}")
+    public Long deleteSchedule(@PathVariable Long id, @PathVariable String password) {
+        return scheduleService.deleteSchedule(id, password);
+    }
 }

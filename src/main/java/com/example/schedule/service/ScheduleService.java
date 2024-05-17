@@ -43,18 +43,38 @@ public class ScheduleService {
     // =====[Update]===== 4단계 선택한 일정 수정
     @Transactional
     public ScheduleResponseDto updateSchedule(Long id, ScheduleRequestDto requestDto, String password) {
-        // 해당 메모가 DB에 존재하는지 확인
+        //  1. 해당 메모가 DB에 존재하는지 확인하고, password 확인
+        Schedule schedule = checkPasswordWithId(id, password);
+
+        //  2. 문제 없으면 schedule 업데이트 처리
+        schedule.update(requestDto);
+
+        //  3. 업데이트 된 schedule을 ResponsDto에 담고 return
+        ScheduleResponseDto scheduleResponseDto = new ScheduleResponseDto(schedule);
+        return scheduleResponseDto;
+
+    }
+
+    // =====[Delete]===== 5단계 선택한 일정 삭제
+    public Long deleteSchedule(Long id, String password) {
+        //  1. 해당 메모가 DB에 존재하는지 확인하고, password 확인
+        Schedule schedule = checkPasswordWithId(id, password);
+
+        //  2. 문제 없으면 schedule 삭제
+        scheduleRepository.delete(schedule);
+
+        //  3. 삭제된 schedule id return
+        return id;
+    }
+
+    //비밀번호 확인 로직
+    public Schedule checkPasswordWithId(Long id, String password) {
         Schedule schedule = getScheduleById(id);
 
-        // 비밀번호 확인 로직 추가
         if (schedule.getPassword().equals(password)) {
-            schedule.update(requestDto);
-            ScheduleResponseDto scheduleResponseDto = new ScheduleResponseDto(schedule);
-            return scheduleResponseDto;
+            return schedule;
         } else {
-            // 비밀번호가 일치하지 않을 경우 예외 처리
             throw new IllegalArgumentException("비밀번호가 일치하지 않습니다.");
         }
     }
-
 }
