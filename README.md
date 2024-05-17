@@ -27,3 +27,17 @@ ex) [Fix] level 1-1 Sum() 함수 return 값을 double -> int 로 수정
 
 <br>
 <br>
+
+### Table
+<img width="400" alt="image" src="https://ifh.cc/g/NB4Wmg.png">
+
+<br>
+<br>
+
+
+### API 명세서
+<img width="857" alt="image" src="https://github.com/YeahyunKim/SpartaNbCamp-SchedulePlan-pp/assets/132278619/a2ed5a22-4021-4857-823c-8f1707a63a86">
+
+<br>
+<br>
+
